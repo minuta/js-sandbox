@@ -1,0 +1,1 @@
+# Just some notes on a JS course

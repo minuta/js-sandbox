@@ -1,1 +1,2 @@
-# Just some notes on a JS course
+# My JS course' notes
+

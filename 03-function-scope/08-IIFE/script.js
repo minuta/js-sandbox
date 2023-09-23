@@ -1,13 +1,17 @@
-
-// IIFE = Immediately Invoked Function Expressions
-
+// IFFE Syntax (Has it's own scope and runs right away)
 (function () {
-    console.log('hello');
+    const user = 'John';
+    console.log(user);
+    const hello = () => console.log('Hello from the IIFE');
+    hello();
 })();
 
-// adding parameters
+// Params
 (function (name) {
-    console.log('Hello', name);
-})('Jack');
+    console.log('Hello ' + name);
+})('Shawn');
 
-
+// Named IIFE (Can only be called recursively)
+(function hello() {
+    console.log('Hello');
+})();

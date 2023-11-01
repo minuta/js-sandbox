@@ -1,13 +1,22 @@
-const div = document.createElement('div');
-div.className = 'my-element';
-div.id = 'my-element';
-div.setAttribute('title', 'My Element');
+const divElem = document.createElement('div');
+divElem.className = 'myElem';
+divElem.id = 'myElem';
+divElem.setAttribute('title', 'myElem');
 
-// div.innerText = 'Hello World';
+// divElem.innerText = 'Hello World!';
+// this method (innerText) to create inner text is not optimal.
+// better create a text node and then append that to the element
 
-const text = document.createTextNode('Hello World');
-div.appendChild(text);
+const text = document.createTextNode('Hello Foobar');
+divElem.appendChild(text);
 
-// document.body.appendChild(div);
 
-document.querySelector('ul').appendChild(div);
+const newElem = document.createElement('li');
+newElem.innerHTML = 'FooBar\n' +
+    '            <button class="remove-item btn-link text-red">\n' +
+    '                <i class="fa-solid fa-xmark"></i>\n' +
+    '            </button>\n';
+
+const ulElem = document.querySelector('ul');
+ulElem.appendChild(newElem);
+

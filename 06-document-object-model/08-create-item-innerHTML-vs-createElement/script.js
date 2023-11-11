@@ -17,27 +17,30 @@ function createListItem(name) {
 // Perfomant Way : creating elements and nodes
 
 function createListItem(name) {
-    // create element li
     const listItem = document.createElement('li');
-    // create text node\
     const textNode = document.createTextNode(name);
-    // create button element
-    const button = document.createElement('button');
-    // add attributes to button
-    button.className = 'remove-item btn-link text-red';
-    const icon = document.createElement('i');
-    icon.className = 'fa-solid fa-xmark';
-    button.appendChild(icon);
+    const button = createButton('remove-item btn-link text-red');
 
-    // attach text node and button element
     listItem.appendChild(textNode);
     listItem.appendChild(button);
-    // find the list block and attach li element
     document.querySelector('.items').appendChild(listItem);
+}
+
+function createButton(classes) {
+    const button = document.createElement('button');
+    button.className = classes;
+    const icon = createIcon('fa-solid fa-xmark');
+    button.appendChild(icon);
+    return button;
+}
+
+function createIcon(classes) {
+    const icon = document.createElement('i');
+    icon.className = classes;
+    return icon;
 }
 
 createListItem('Banana');
 createListItem('Ice Cream');
-
 
 console.log('done...!');

@@ -21,10 +21,18 @@ function renderFetchedData(data) {
     } else {
         document.querySelector('img').style.border = '10px solid red';
     }
+    hideSpinner();
+}
+
+function showSpinner() {
+    document.querySelector('.spinner').classList.remove('hidden');
+}
+
+function hideSpinner() {
     document.querySelector('.spinner').classList.add('hidden');
 }
 
 document.querySelector('#generate').addEventListener('click',()=>{
-    document.querySelector('.spinner.hidden').classList.remove('hidden')
+    showSpinner();
     fetchUserData();
 })

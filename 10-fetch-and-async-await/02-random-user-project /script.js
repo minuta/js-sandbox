@@ -25,11 +25,11 @@ function renderFetchedData(data) {
 }
 
 function showSpinner() {
-    document.querySelector('.spinner').classList.remove('hidden');
+    document.querySelector('.spinner').style.display = 'block';
 }
 
 function hideSpinner() {
-    document.querySelector('.spinner').classList.add('hidden');
+    document.querySelector('.spinner').style.display = 'none';
 }
 
 document.querySelector('#generate').addEventListener('click',()=>{

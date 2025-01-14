@@ -1,6 +1,9 @@
 
+
+const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+
 function createPost({title, body}){
-    fetch('https://jsonplaceholder.typicode.com/posts', {
+    fetch(apiUrl, {
         method: 'POST',
         headers: {
             'Content-type': 'application/json'

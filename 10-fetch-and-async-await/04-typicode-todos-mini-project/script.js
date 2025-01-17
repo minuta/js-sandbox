@@ -11,12 +11,14 @@ function getTodos() {
 
 function addTodoToDOM(todo) {
         const div = document.createElement('div');
+        div.classList.add('todo');
+        div.setAttribute('data-id', todo.id);
+
         div.appendChild(document.createTextNode(todo.title));
 
         if (todo.completed) {
             div.classList.add('done');
         }
-        div.setAttribute('data-id', todo.id);
         document.querySelector('#todo-list').appendChild(div);
 }
 
@@ -41,9 +43,30 @@ function createTodo(e) {
     console.log(newTodo);
 }
 
+function toggleCompleted(e) {
+    e.preventDefault();
+    if (e.target.classList.contains('todo')) {
+        e.target.classList.toggle('done');
+        // console.log('first: ' + e.target.getAttribute('data-id'));
+        // console.log('second: ' + e.target.dataset.id);
+        updateTodo(e.target.dataset.id, e.target.classList.contains('done'))
+    }
+}
+
+function updateTodo(id, completed) {
+    fetch(`${apiUrl}/${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({completed}),
+        headers: {'Content-Type': 'application/json'}
+    }).then(response => response.json())
+        .then(data => console.log(data));
+    // console.log(id, completed);
+}
+
 function init() {
     document.addEventListener('DOMContentLoaded', getTodos);
     document.querySelector('#todo-form').addEventListener('submit', createTodo);
+    document.querySelector('#todo-list').addEventListener('click', toggleCompleted);
 }
 
 init();

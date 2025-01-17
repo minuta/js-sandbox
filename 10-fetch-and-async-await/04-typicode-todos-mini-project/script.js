@@ -63,10 +63,23 @@ function updateTodo(id, completed) {
     // console.log(id, completed);
 }
 
+function deleteTodo(e) {
+    if (e.target.classList.contains('todo')) {
+        console.log('double clicked...');
+        fetch(`${apiUrl}/${e.target.dataset.id}`, {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+        })
+            .then(response => response.json())
+            .then(data => e.target.remove());
+    }
+}
+
 function init() {
     document.addEventListener('DOMContentLoaded', getTodos);
     document.querySelector('#todo-form').addEventListener('submit', createTodo);
     document.querySelector('#todo-list').addEventListener('click', toggleCompleted);
+    document.querySelector('#todo-list').addEventListener('dblclick', deleteTodo);
 }
 
 init();

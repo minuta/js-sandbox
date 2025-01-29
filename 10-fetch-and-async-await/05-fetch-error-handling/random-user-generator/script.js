@@ -1,11 +1,23 @@
 
 
 function fetchUserData() {
-    fetch('https://randomuser.me/api/')
-        .then(response => response.json())
+    fetch('https://randomuser.me/apiXXX/')
+        .then(response => {
+            if (!response.ok) {
+                throw Error("Request failed!");
+            }
+            return response.json()
+
+        })
         .then(data => {
             renderFetchedData(data.results[0]);
         })
+        .catch(error => {
+            hideSpinner();
+            document.querySelector('#user').innerHTML =
+                `<p class = "text-xl text-center text-center text-red-500 mb-5"> ${error} </p>`;
+            console.log(error)
+        });
 }
 
 function renderFetchedData(data) {

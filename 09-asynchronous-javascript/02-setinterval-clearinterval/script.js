@@ -1,3 +1,7 @@
+// setInterval in JavaScript is used to execute a function repeatedly at a fixed time interval.
+// It continues running until it is cleared with clearInterval.
+
+
 // const intervalID = setInterval(myCallback, 1000, 'Hello');
 
 // function myCallback(a) {
@@ -22,6 +26,7 @@ function startChange() {
 //   }
 // }
 
+// change background color randomly
 function changeRandomColor() {
     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
     document.body.style.backgroundColor = `#${randomColor}`;
